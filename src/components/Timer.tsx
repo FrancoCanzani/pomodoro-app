@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-function Countdown() {
-  const [countdown, setCountdown] = useState({
-    minutes: 25,
-    seconds: 0,
-  });
-
-  const [isRunning, setIsRunning] = useState(false);
-
-  let interval = null;
-
+export default function Timer({
+  countdown,
+  isRunning,
+  interval,
+  setCountdown,
+}) {
   useEffect(() => {
     if (isRunning) {
       interval = setInterval(() => {
@@ -38,55 +34,18 @@ function Countdown() {
     return () => clearInterval(interval);
   }, [isRunning]);
 
-  function handleCountdown() {
-    setIsRunning(true);
-  }
-
-  function handleReset() {
-    clearInterval(interval);
-    setIsRunning(false);
-    setCountdown({
-      minutes: 25,
-      seconds: 0,
-    });
-  }
-
-  function handlePause() {
-    clearInterval(interval);
-    setIsRunning(false);
-  }
+  //   Shows the timer in the tab of the browser
+  useEffect(() => {
+    document.title = `${countdown.minutes}:${countdown.seconds
+      .toString()
+      .padStart(2, '0')} | Focus`;
+  }, [countdown]);
 
   return (
     <div className='text-white'>
-      <h1 className='text-center text-9xl font-light'>{`${
+      <h1 className='text-center text-9xl font-black'>{`${
         countdown.minutes
       }:${countdown.seconds.toString().padStart(2, '0')}`}</h1>
-      <div className='flex items-center justify-center'>
-        {isRunning ? (
-          <button
-            onClick={handlePause}
-            className='m-6 rounded-md bg-slate-400 px-6 py-4 text-xl font-bold uppercase active:translate-y-0.5'
-          >
-            Pause
-          </button>
-        ) : (
-          <button
-            onClick={handleCountdown}
-            className='m-6 rounded-md bg-green-400 px-6 py-4 text-xl font-bold uppercase active:translate-y-0.5'
-          >
-            Play
-          </button>
-        )}
-
-        <button
-          onClick={handleReset}
-          className='m-6 rounded-md bg-red-400 px-6 py-4 text-xl font-bold uppercase active:translate-y-0.5'
-        >
-          Reset
-        </button>
-      </div>
     </div>
   );
 }
-
-export default Countdown;
