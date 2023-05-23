@@ -1,20 +1,20 @@
 interface FunctionalButtonProps {
   action: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  text: string;
+  icon: JSX.Element;
   color: string;
 }
 
 export default function FunctionalButton({
   action,
-  text,
+  icon,
   color,
 }: FunctionalButtonProps) {
   return (
     <button
       onClick={action}
-      className={`m-6 rounded-md ${color} px-6 py-4 text-xl font-bold uppercase animate-once active:translate-y-0.5`}
+      className={`mx-2 my-8 rounded-md ${color} px-3 py-2 text-xl font-bold uppercase animate-once active:translate-y-0.5`}
     >
-      {text}
+      {icon}
     </button>
   );
 }

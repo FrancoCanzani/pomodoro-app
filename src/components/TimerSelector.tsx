@@ -14,9 +14,9 @@ export default function TimerSelector({
   return (
     <button
       onClick={handleTimerSelector}
-      className={`text-md mx-2 my-6 rounded-md px-3 py-2 font-bold uppercase ${
-        currentTimer === timerType ? 'bg-sky-600 text-white' : 'bg-slate-100'
-      } animate-once focus:bg-sky-600 focus:text-white active:translate-y-0.5`}
+      className={`text-md mx-2 my-8 rounded-md px-3 py-2 font-bold uppercase ${
+        currentTimer === timerType ? 'bg-black text-white' : ''
+      } hover:bg-black hover:text-white focus:text-white active:translate-y-0.5`}
     >
       {timerType}
     </button>

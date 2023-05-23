@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <header className='fixed left-80 top-2 w-screen '>
-      <h1 className='text-xl font-bold uppercase text-white'>
+    <header className='mt-8 flex items-center justify-center '>
+      <h1 className='text-6xl font-black uppercase'>
         Focus <span className='text-red-500'>Mate</span>
       </h1>
     </header>

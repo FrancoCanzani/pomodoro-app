@@ -23,11 +23,11 @@ export default function Tasks() {
 
   return (
     <>
-      <div className='flex items-center justify-between border-b-2'>
-        <h1 className='m-4 text-4xl font-black uppercase text-white'>Tasks</h1>
+      <div className='my-4 flex items-center justify-between border-b-2 border-black'>
+        <h1 className='m-4 text-4xl font-black uppercase'>Tasks</h1>
         <form onSubmit={handleAddTask} className='flex items-center'>
           <input
-            className='bg-transparent text-xl font-semibold text-white outline-none'
+            className='bg-transparent text-xl font-semibold outline-none'
             type='text'
             name='task'
             ref={inputRef}
@@ -40,7 +40,7 @@ export default function Tasks() {
               viewBox='0 0 20 20'
             >
               <path
-                fill='white'
+                fill='currentColor'
                 d='M5.854 3.354a.5.5 0 1 0-.708-.708L3.5 4.293l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2ZM8.75 3.5a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm0 5a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm1.272 6.5a5.47 5.47 0 0 1 .353-1.5H8.75a.75.75 0 0 0 0 1.5h1.272ZM5.854 8.854a.5.5 0 1 0-.708-.708L3.5 9.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2Zm0 4.292a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647l1.646-1.647a.5.5 0 0 1 .708 0ZM20 15.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V15h-1.5a.5.5 0 0 0 0 1H15v1.5a.5.5 0 0 0 1 0V16h1.5a.5.5 0 0 0 0-1H16v-1.5Z'
               />
             </svg>
@@ -52,7 +52,8 @@ export default function Tasks() {
           tasks.map((task) => (
             <div
               key={task.id}
-              className='my-3 flex w-96 cursor-pointer items-center justify-between rounded-md border-l-4 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
+              className='my-3 flex
+              w-96 animate-fade-down cursor-pointer items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
             >
               <p>{task.text}</p>
               <button

@@ -42,7 +42,7 @@ export default function Timer({
   }, [countdown]);
 
   return (
-    <div className='text-white'>
+    <div>
       <h1 className='text-center text-9xl font-black'>{`${
         countdown.minutes
       }:${countdown.seconds.toString().padStart(2, '0')}`}</h1>
