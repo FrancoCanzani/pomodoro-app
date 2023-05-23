@@ -16,14 +16,9 @@ export default function Tasks() {
       text: e.target.task.value,
     };
     if (newTask.text.trim() !== '') {
-      setTasks((prevTasks) => [...prevTasks, newTask]);
+      setTasks([...tasks, newTask]);
       e.target.task.value = '';
     }
-  }
-
-  function handleDeleteTask(id) {
-    const filtered = tasks.filter((task) => task.id !== id);
-    setTasks({ ...filtered });
   }
 
   return (
@@ -60,7 +55,11 @@ export default function Tasks() {
               className='my-3 flex w-96 cursor-pointer items-center justify-between rounded-md border-l-4 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
             >
               <p>{task.text}</p>
-              <button onClick={() => handleDeleteTask(task.id)}>
+              <button
+                onClick={() => {
+                  setTasks(tasks.filter((a) => a.id !== task.id));
+                }}
+              >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='25'

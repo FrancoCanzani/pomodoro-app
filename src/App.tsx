@@ -4,6 +4,7 @@ import Timer from './components/Timer';
 import FunctionalButton from './components/FunctionalButton';
 import TimerSelector from './components/TimerSelector';
 import Tasks from './components/Tasks';
+import Header from './components/Header';
 
 function App() {
   const [countdown, setCountdown] = useState({
@@ -38,10 +39,8 @@ function App() {
 
   return (
     <main className='font-atkinson flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 to-sky-900'>
-      <h1 className='py-8 text-5xl font-bold uppercase text-white'>
-        Focus Mate
-      </h1>
-      <div className='flex items-center justify-center'>
+      <Header />
+      <div className='mt-8 flex items-center justify-center'>
         <TimerSelector
           timerType={'Pomodoro'}
           time={{
