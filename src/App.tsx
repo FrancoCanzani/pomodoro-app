@@ -3,14 +3,16 @@ import { useState } from 'react';
 import Timer from './components/Timer';
 import FunctionalButton from './components/FunctionalButton';
 import TimerSelector from './components/TimerSelector';
+import Tasks from './components/Tasks';
 
 function App() {
   const [countdown, setCountdown] = useState({
     minutes: 25,
     seconds: 0,
   });
-
   const [isRunning, setIsRunning] = useState(false);
+  // State to switch color of timer selector bg
+  const [currentTimer, setCurrentTimer] = useState('Pomodoro');
 
   let interval: undefined | number = undefined;
 
@@ -33,8 +35,12 @@ function App() {
     clearInterval(interval);
     setIsRunning(false);
   }
+
   return (
-    <main className='font-atkinson flex h-screen w-screen flex-col items-center justify-center bg-gray-800'>
+    <main className='font-atkinson flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 to-sky-900'>
+      <h1 className='py-8 text-5xl font-bold uppercase text-white'>
+        Focus Mate
+      </h1>
       <div className='flex items-center justify-center'>
         <TimerSelector
           timerType={'Pomodoro'}
@@ -43,6 +49,8 @@ function App() {
             seconds: 0,
           }}
           setCountdown={setCountdown}
+          currentTimer={currentTimer}
+          setCurrentTimer={setCurrentTimer}
         />
         <TimerSelector
           timerType={'Short break'}
@@ -51,6 +59,8 @@ function App() {
             seconds: 0,
           }}
           setCountdown={setCountdown}
+          currentTimer={currentTimer}
+          setCurrentTimer={setCurrentTimer}
         />
         <TimerSelector
           timerType={'Long break'}
@@ -59,6 +69,8 @@ function App() {
             seconds: 0,
           }}
           setCountdown={setCountdown}
+          currentTimer={currentTimer}
+          setCurrentTimer={setCurrentTimer}
         />
       </div>
 
@@ -90,6 +102,7 @@ function App() {
           color='bg-red-400'
         />
       </div>
+      <Tasks />
     </main>
   );
 }
