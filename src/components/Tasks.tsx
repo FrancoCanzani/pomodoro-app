@@ -40,7 +40,7 @@ export default function Tasks() {
 
   return (
     <>
-      <div className='my-4 flex items-center justify-between border-b-2 border-black'>
+      <div className='my-4 flex items-center justify-between border-b-2 border-black px-3'>
         <h1 className='m-4 text-3xl font-black uppercase'>Tasks</h1>
         <form onSubmit={handleAddTask} className='flex items-center'>
           <input

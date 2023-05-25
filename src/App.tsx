@@ -65,13 +65,35 @@ function App() {
   }
 
   // clearInterval() method cancels a timed, repeating action which was previously established by a call to setInterval()
+
   function handleReset() {
     clearInterval(interval);
     setIsRunning(false);
-    setCountdown({
-      minutes: 25,
+
+    let resetTime: { minutes: number; seconds: number } = {
+      minutes: 0,
       seconds: 0,
-    });
+    };
+
+    // Determine the appropriate reset time based on the current timer type
+    if (currentTimer === 'Pomodoro') {
+      resetTime = {
+        minutes: 25,
+        seconds: 0,
+      };
+    } else if (currentTimer === 'Short break') {
+      resetTime = {
+        minutes: 5,
+        seconds: 0,
+      };
+    } else if (currentTimer === 'Long break') {
+      resetTime = {
+        minutes: 10,
+        seconds: 0,
+      };
+    }
+
+    setCountdown(resetTime);
   }
 
   function handlePause() {
