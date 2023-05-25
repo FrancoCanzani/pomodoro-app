@@ -12,7 +12,7 @@ export default function FunctionalButton({
   return (
     <button
       onClick={action}
-      className={`mx-2 my-8 rounded-md ${color} px-3 py-2 text-xl font-bold uppercase animate-once active:translate-y-0.5`}
+      className={`mx-2 my-8 rounded-md px-3 py-2 text-xl font-bold uppercase animate-once active:translate-y-0.5`}
     >
       {icon}
     </button>
