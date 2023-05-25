@@ -21,8 +21,8 @@ function App() {
   const playSVG = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='32'
-      height='32'
+      width='36'
+      height='36'
       viewBox='0 0 24 24'
     >
       <path fill='currentColor' d='M8 19V5l11 7l-11 7Z' />
@@ -32,8 +32,8 @@ function App() {
   const pauseSVG = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='32'
-      height='32'
+      width='36'
+      height='36'
       viewBox='0 0 24 24'
     >
       <path fill='currentColor' d='M14 19V5h4v14h-4Zm-8 0V5h4v14H6Z' />
@@ -43,8 +43,8 @@ function App() {
   const resetSVG = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='23'
-      height='23'
+      width='25'
+      height='25'
       viewBox='0 0 14 14'
     >
       <g
@@ -53,8 +53,8 @@ function App() {
         stroke-linecap='round'
         stroke-linejoin='round'
       >
-        <path d='M7 .5A6.5 6.5 0 1 1 .5 7a7.23 7.23 0 0 1 2-5' />
-        <path d='m.5 2.5l2-.5l.5 2m4-.5v4l2.6 1.3' />
+        <path d='M7 13.5A6.5 6.5 0 1 1 13.5 7a7.23 7.23 0 0 1-2 5' />
+        <path d='m13.5 11.5l-2 .5l-.5-2M9 9L7 6.5H4' />
       </g>
     </svg>
   );

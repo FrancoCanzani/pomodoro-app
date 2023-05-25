@@ -7,7 +7,6 @@ interface FunctionalButtonProps {
 export default function FunctionalButton({
   action,
   icon,
-  color,
 }: FunctionalButtonProps) {
   return (
     <button

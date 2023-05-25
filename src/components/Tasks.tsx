@@ -1,19 +1,16 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
-  const inputRef = useRef(null); // Reference to the input element
-
-  useEffect(() => {
-    inputRef.current.focus(); // Focus on the input when the component mounts
-  }, []);
 
   function handleAddTask(e) {
     e.preventDefault();
     const newTask = {
       id: uuidv4(), // Generate a unique id using uuidv4
       text: e.target.task.value,
+      style: '!underline',
+      editable: false,
     };
     if (newTask.text.trim() !== '') {
       setTasks([...tasks, newTask]);
@@ -21,22 +18,65 @@ export default function Tasks() {
     }
   }
 
+  function toggleUnderline(id) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            style: task.style === 'underline' ? '!underline' : 'underline',
+          };
+        }
+        return task;
+      })
+    );
+  }
+
+  function toggleEdit(id) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            editable: !task.editable,
+          };
+        }
+        return task;
+      })
+    );
+  }
+
+  function handleEditTask(id, newText) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            text: newText,
+            editable: false,
+          };
+        }
+        return task;
+      })
+    );
+  }
+
   return (
     <>
       <div className='my-4 flex items-center justify-between border-b-2 border-black'>
-        <h1 className='m-4 text-4xl font-black uppercase'>Tasks</h1>
+        <h1 className='m-4 text-3xl font-black uppercase'>Tasks</h1>
         <form onSubmit={handleAddTask} className='flex items-center'>
           <input
             className='bg-transparent text-xl font-semibold outline-none'
             type='text'
             name='task'
-            ref={inputRef}
+            autoFocus
           />
           <button type='submit' className='pointer active:translate-y-0.5'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              width='32'
-              height='32'
+              width='30'
+              height='30'
               viewBox='0 0 20 20'
             >
               <path
@@ -47,15 +87,35 @@ export default function Tasks() {
           </button>
         </form>
       </div>
-      <div className='my-4'>
+      <div className='my-4 flex flex-col justify-center'>
         {tasks.length > 0 &&
           tasks.map((task) => (
             <div
               key={task.id}
-              className='my-3 flex
-              w-96 animate-fade-down cursor-pointer items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
+              className='my-3 flex w-96 animate-fade-down items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
             >
-              <p>{task.text}</p>
+              {task.editable ? (
+                <input
+                  className='bg-transparent text-xl font-semibold outline-none'
+                  type='text'
+                  value={task.text}
+                  onChange={(e) => handleEditTask(task.id, e.target.value)}
+                  autoFocus
+                />
+              ) : (
+                <p
+                  className='mr-10 cursor-pointer truncate text-2xl'
+                  style={{
+                    textDecoration:
+                      task.style === 'underline' ? 'line-through' : 'none',
+                    color: task.style === 'underline' ? 'gray' : '',
+                  }}
+                  onClick={() => toggleUnderline(task.id)}
+                >
+                  {task.text}
+                </p>
+              )}
+
               <button
                 onClick={() => {
                   setTasks(tasks.filter((a) => a.id !== task.id));
@@ -65,11 +125,11 @@ export default function Tasks() {
                   xmlns='http://www.w3.org/2000/svg'
                   width='25'
                   height='25'
-                  viewBox='0 0 256 256'
+                  viewBox='0 0 24 24'
                 >
                   <path
                     fill='currentColor'
-                    d='M216 48h-36V36a28 28 0 0 0-28-28h-48a28 28 0 0 0-28 28v12H40a12 12 0 0 0 0 24h4v136a20 20 0 0 0 20 20h128a20 20 0 0 0 20-20V72h4a12 12 0 0 0 0-24ZM100 36a4 4 0 0 1 4-4h48a4 4 0 0 1 4 4v12h-56Zm88 168H68V72h120Zm-72-100v64a12 12 0 0 1-24 0v-64a12 12 0 0 1 24 0Zm48 0v64a12 12 0 0 1-24 0v-64a12 12 0 0 1 24 0Z'
+                    d='m9.4 16.5l2.6-2.6l2.6 2.6l1.4-1.4l-2.6-2.6L16 9.9l-1.4-1.4l-2.6 2.6l-2.6-2.6L8 9.9l2.6 2.6L8 15.1l1.4 1.4ZM7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7Z'
                   />
                 </svg>
               </button>
