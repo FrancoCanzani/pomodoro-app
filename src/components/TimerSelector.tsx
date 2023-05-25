@@ -1,11 +1,20 @@
+interface TimerSelectorProps {
+  timerType: string;
+  setCountdown: React.Dispatch<
+    React.SetStateAction<{ minutes: number; seconds: number }>
+  >;
+  time: { minutes: number; seconds: number };
+  currentTimer: string;
+  setCurrentTimer: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export default function TimerSelector({
   timerType,
   setCountdown,
   time,
   currentTimer,
   setCurrentTimer,
-}) {
-  // Fn to switch color of timer selector bg and time
+}: TimerSelectorProps) {
   function handleTimerSelector() {
     setCountdown({ ...time });
     setCurrentTimer(timerType);
