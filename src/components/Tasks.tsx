@@ -1,59 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function Tasks() {
-  const [tasks, setTasks] = useState([]);
+interface Task {
+  id: string;
+  text: string;
+  style: string;
+}
 
-  function handleAddTask(e) {
+export default function Tasks() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const uniqueId: string = uuidv4();
+
+  function handleAddTask(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const newTask = {
-      id: uuidv4(), // Generate a unique id using uuidv4
-      text: e.target.task.value,
+    const newTask: Task = {
+      id: uniqueId, // Generate a unique id using uuidv4
+      text: e.currentTarget.task.value,
       style: '!underline',
-      editable: false,
     };
     if (newTask.text.trim() !== '') {
       setTasks([...tasks, newTask]);
-      e.target.task.value = '';
+      e.currentTarget.task.value = '';
     }
   }
 
-  function toggleUnderline(id) {
+  function toggleUnderline(id: string) {
     setTasks((prevTasks) =>
       prevTasks.map((task) => {
         if (task.id === id) {
           return {
             ...task,
             style: task.style === 'underline' ? '!underline' : 'underline',
-          };
-        }
-        return task;
-      })
-    );
-  }
-
-  function toggleEdit(id) {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) => {
-        if (task.id === id) {
-          return {
-            ...task,
-            editable: !task.editable,
-          };
-        }
-        return task;
-      })
-    );
-  }
-
-  function handleEditTask(id, newText) {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) => {
-        if (task.id === id) {
-          return {
-            ...task,
-            text: newText,
-            editable: false,
           };
         }
         return task;
@@ -71,8 +48,13 @@ export default function Tasks() {
             type='text'
             name='task'
             autoFocus
+            aria-label='Task name'
           />
-          <button type='submit' className='pointer active:translate-y-0.5'>
+          <button
+            type='submit'
+            aria-label='Add task'
+            className='pointer active:translate-y-0.5'
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='30'
@@ -94,32 +76,23 @@ export default function Tasks() {
               key={task.id}
               className='my-3 flex w-96 animate-fade-down items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
             >
-              {task.editable ? (
-                <input
-                  className='bg-transparent text-xl font-semibold outline-none'
-                  type='text'
-                  value={task.text}
-                  onChange={(e) => handleEditTask(task.id, e.target.value)}
-                  autoFocus
-                />
-              ) : (
-                <p
-                  className='mr-10 cursor-pointer truncate text-2xl'
-                  style={{
-                    textDecoration:
-                      task.style === 'underline' ? 'line-through' : 'none',
-                    color: task.style === 'underline' ? 'gray' : '',
-                  }}
-                  onClick={() => toggleUnderline(task.id)}
-                >
-                  {task.text}
-                </p>
-              )}
+              <p
+                className='mr-10 cursor-pointer truncate text-2xl'
+                style={{
+                  textDecoration:
+                    task.style === 'underline' ? 'line-through' : 'none',
+                  color: task.style === 'underline' ? 'gray' : '',
+                }}
+                onClick={() => toggleUnderline(task.id)}
+              >
+                {task.text}
+              </p>
 
               <button
                 onClick={() => {
                   setTasks(tasks.filter((a) => a.id !== task.id));
                 }}
+                aria-label='Delete task'
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

@@ -128,12 +128,14 @@ function App() {
             action={handlePause}
             icon={pauseSVG}
             color='bg-gray-400'
+            label='Pause timer'
           />
         ) : (
           <FunctionalButton
             action={handleCountdown}
             icon={playSVG}
             color='bg-green-400'
+            label='Play timer'
           />
         )}
 
@@ -141,6 +143,7 @@ function App() {
           action={handleReset}
           icon={resetSVG}
           color='bg-red-400'
+          label='Reset timer'
         />
       </div>
       <Tasks />
