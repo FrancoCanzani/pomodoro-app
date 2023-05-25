@@ -40,11 +40,11 @@ export default function Tasks() {
 
   return (
     <>
-      <div className='my-4 flex items-center justify-between border-b-2 border-black px-3'>
-        <h1 className='m-4 text-3xl font-black uppercase'>Tasks</h1>
+      <div className='my-4 flex w-2/3 items-center justify-between border-b-2 border-black px-3 sm:w-1/2 md:w-1/3'>
+        <h1 className='m-4 text-2xl font-black uppercase'>Tasks</h1>
         <form onSubmit={handleAddTask} className='flex items-center'>
           <input
-            className='bg-transparent text-xl font-semibold outline-none'
+            className='bg-transparent text-lg font-semibold outline-none'
             type='text'
             name='task'
             autoFocus
