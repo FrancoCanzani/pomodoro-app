@@ -39,36 +39,41 @@ export default function Tasks() {
   }
 
   return (
-    <>
-      <div className='my-4 flex w-2/3 items-center justify-between border-b-2 border-black px-3 sm:w-1/2 md:w-1/3'>
-        <h1 className='m-4 text-2xl font-black uppercase'>Tasks</h1>
-        <form onSubmit={handleAddTask} className='flex items-center'>
-          <input
-            className='bg-transparent text-lg font-semibold outline-none'
-            type='text'
-            name='task'
-            autoFocus
-            aria-label='Task name'
-          />
-          <button
-            type='submit'
-            aria-label='Add task'
-            className='pointer active:translate-y-0.5'
-          >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='30'
-              height='30'
-              viewBox='0 0 20 20'
+    <section className='flex w-1/4 flex-col items-center justify-center'>
+      <form onSubmit={handleAddTask} className='flex w-full items-center'>
+        <fieldset className='w-full rounded-lg border-4 border-black'>
+          <legend className='px-2 text-center text-2xl font-black uppercase'>
+            Tasks
+          </legend>
+          <div className='flex w-full items-center justify-center p-2'>
+            {' '}
+            <input
+              className='w-full bg-transparent text-lg font-semibold outline-none'
+              type='text'
+              name='task'
+              autoFocus
+              aria-label='Task name'
+            />
+            <button
+              type='submit'
+              aria-label='Add task'
+              className='pointer active:translate-y-0.5'
             >
-              <path
-                fill='currentColor'
-                d='M5.854 3.354a.5.5 0 1 0-.708-.708L3.5 4.293l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2ZM8.75 3.5a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm0 5a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm1.272 6.5a5.47 5.47 0 0 1 .353-1.5H8.75a.75.75 0 0 0 0 1.5h1.272ZM5.854 8.854a.5.5 0 1 0-.708-.708L3.5 9.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2Zm0 4.292a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647l1.646-1.647a.5.5 0 0 1 .708 0ZM20 15.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V15h-1.5a.5.5 0 0 0 0 1H15v1.5a.5.5 0 0 0 1 0V16h1.5a.5.5 0 0 0 0-1H16v-1.5Z'
-              />
-            </svg>
-          </button>
-        </form>
-      </div>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='32'
+                height='32'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  fill='currentColor'
+                  d='M19 6a1 1 0 0 0-1 1v4a1 1 0 0 1-1 1H7.41l1.3-1.29a1 1 0 0 0-1.42-1.42l-3 3a1 1 0 0 0-.21.33a1 1 0 0 0 0 .76a1 1 0 0 0 .21.33l3 3a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42L7.41 14H17a3 3 0 0 0 3-3V7a1 1 0 0 0-1-1Z'
+                />
+              </svg>
+            </button>
+          </div>
+        </fieldset>
+      </form>
       <div className='my-4 flex flex-col justify-center'>
         {tasks.length > 0 &&
           tasks.map((task) => (
@@ -109,6 +114,6 @@ export default function Tasks() {
             </div>
           ))}
       </div>
-    </>
+    </section>
   );
 }

@@ -51,10 +51,10 @@ export default function Timer({
   }, [countdown]);
 
   return (
-    <div>
-      <h1 className='text-center text-9xl font-black'>{`${
+    <>
+      <time className='text-center text-9xl font-black'>{`${
         countdown.minutes
-      }:${countdown.seconds.toString().padStart(2, '0')}`}</h1>
-    </div>
+      }:${countdown.seconds.toString().padStart(2, '0')}`}</time>
+    </>
   );
 }

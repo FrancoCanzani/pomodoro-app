@@ -34,7 +34,7 @@ export default function FullScreen() {
   return (
     <button
       onClick={handleFullScreenToggle}
-      className='rounded-md bg-red-200 px-4 py-2 font-mono font-bold uppercase text-red-800 hover:bg-red-100'
+      className='mb-2 rounded-md border-2 border-red-700 bg-red-200 px-2 py-1 font-mono font-bold uppercase text-red-800 hover:bg-red-100'
     >
       {isFullScreen ? 'Exit zen mode' : 'Enable zen mode'}
     </button>
