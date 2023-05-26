@@ -39,7 +39,7 @@ export default function Tasks() {
   }
 
   return (
-    <section className='flex w-1/4 flex-col items-center justify-center'>
+    <section className='flex w-96 flex-col items-center justify-center'>
       <form onSubmit={handleAddTask} className='flex w-full items-center'>
         <fieldset className='w-full rounded-lg border-4 border-black'>
           <legend className='px-2 text-center text-2xl font-black uppercase'>
