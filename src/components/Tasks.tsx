@@ -79,7 +79,7 @@ export default function Tasks() {
           tasks.map((task) => (
             <div
               key={task.id}
-              className='my-3 flex w-96 animate-fade-down items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
+              className='my-3 flex w-80 items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
             >
               <p
                 className='mr-10 cursor-pointer truncate text-2xl'
@@ -103,11 +103,15 @@ export default function Tasks() {
                   xmlns='http://www.w3.org/2000/svg'
                   width='25'
                   height='25'
-                  viewBox='0 0 24 24'
+                  viewBox='0 0 16 12'
                 >
                   <path
-                    fill='currentColor'
-                    d='m9.4 16.5l2.6-2.6l2.6 2.6l1.4-1.4l-2.6-2.6L16 9.9l-1.4-1.4l-2.6 2.6l-2.6-2.6L8 9.9l2.6 2.6L8 15.1l1.4 1.4ZM7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7Z'
+                    fill='none'
+                    stroke='currentColor'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='1.5'
+                    d='m11.25 4.75l-6.5 6.5m0-6.5l6.5 6.5'
                   />
                 </svg>
               </button>
