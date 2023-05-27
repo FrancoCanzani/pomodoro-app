@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface Task {
   id: string;
@@ -19,7 +20,7 @@ export default function Tasks() {
       style: '!underline',
     };
     if (newTask.text.trim() !== '') {
-      setTasks([...tasks, newTask]);
+      setTasks([newTask, ...tasks]);
       e.currentTarget.task.value = '';
     }
   }
@@ -40,13 +41,12 @@ export default function Tasks() {
 
   return (
     <section className='flex w-96 flex-col items-center justify-center px-3'>
-      <form onSubmit={handleAddTask} className='flex w-full items-center'>
+      <form onSubmit={handleAddTask} className='mb-2 flex w-full items-center'>
         <fieldset className='w-full rounded-lg border-4 border-black'>
           <legend className='px-2 text-center text-2xl font-black uppercase'>
             Tasks
           </legend>
           <div className='flex w-full items-center justify-center p-2'>
-            {' '}
             <input
               className='w-full bg-transparent text-lg font-semibold outline-none'
               type='text'
@@ -74,50 +74,57 @@ export default function Tasks() {
           </div>
         </fieldset>
       </form>
-      <div className='my-4 flex flex-col justify-center'>
-        {tasks.length > 0 &&
-          tasks.map((task) => (
-            <div
-              key={task.id}
-              className='my-3 flex w-80 items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
-            >
-              <p
-                className='mr-10 cursor-pointer truncate text-2xl'
-                style={{
-                  textDecoration:
-                    task.style === 'underline' ? 'line-through' : 'none',
-                  color: task.style === 'underline' ? 'gray' : '',
-                }}
-                onClick={() => toggleUnderline(task.id)}
+      <ul className='mb-4 flex flex-col justify-center'>
+        <AnimatePresence>
+          {tasks.length > 0 &&
+            tasks.map((task) => (
+              <motion.li
+                key={task.id}
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 5 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.1 }}
+                className='my-3 flex w-80 items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
               >
-                {task.text}
-              </p>
-
-              <button
-                onClick={() => {
-                  setTasks(tasks.filter((a) => a.id !== task.id));
-                }}
-                aria-label='Delete task'
-              >
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='25'
-                  height='25'
-                  viewBox='0 0 16 12'
+                <p
+                  className='mr-10 cursor-pointer truncate text-2xl'
+                  style={{
+                    textDecoration:
+                      task.style === 'underline' ? 'line-through' : 'none',
+                    color: task.style === 'underline' ? 'gray' : '',
+                  }}
+                  onClick={() => toggleUnderline(task.id)}
                 >
-                  <path
-                    fill='none'
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='1.5'
-                    d='m11.25 4.75l-6.5 6.5m0-6.5l6.5 6.5'
-                  />
-                </svg>
-              </button>
-            </div>
-          ))}
-      </div>
+                  {task.text}
+                </p>
+
+                <button
+                  onClick={() => {
+                    setTasks(tasks.filter((a) => a.id !== task.id));
+                  }}
+                  aria-label='Delete task'
+                >
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='25'
+                    height='25'
+                    viewBox='0 0 16 12'
+                  >
+                    <path
+                      fill='none'
+                      stroke='currentColor'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='1.5'
+                      d='m11.25 4.75l-6.5 6.5m0-6.5l6.5 6.5'
+                    />
+                  </svg>
+                </button>
+              </motion.li>
+            ))}
+        </AnimatePresence>
+      </ul>
     </section>
   );
 }
