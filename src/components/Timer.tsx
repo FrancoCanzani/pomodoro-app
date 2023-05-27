@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 interface TimerProps {
   countdown: { minutes: number; seconds: number };
   isRunning: boolean;
-  interval: undefined | number;
+  interval: NodeJS.Timeout | undefined;
   setCountdown: React.Dispatch<
     React.SetStateAction<{ minutes: number; seconds: number }>
   >;
