@@ -17,8 +17,6 @@ The Pomodoro App is a productivity tool that helps you manage your time and impr
 ## Features
 
 - Timer: Set a custom timer for work and break intervals.
-- Notifications: Get notified when each interval ends.
-- Session History: Track your completed pomodoro sessions.
 - Task List: Manage your tasks and track your progress.
 
 ## Installation
@@ -49,7 +47,7 @@ The Pomodoro App is a productivity tool that helps you manage your time and impr
 - React: A JavaScript library for building user interfaces.
 - TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
 - HTML: The standard markup language for creating web pages.
-- CSS: A stylesheet language used for describing the look and formatting of a document written in HTML.
+- Tailwind CSS: A CSS Framework.
 
 ## Contributing
 
