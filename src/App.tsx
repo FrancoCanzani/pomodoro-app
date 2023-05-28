@@ -102,7 +102,7 @@ function App() {
   }
 
   return (
-    <main className='font-atkinson flex min-h-screen min-w-full flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-red-100'>
+    <main className='font-atkinson flex min-h-screen min-w-full flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-blue-400'>
       <Header />
       <div className='mt-8 flex items-center justify-center px-2'>
         <TimerSelector
@@ -148,23 +148,26 @@ function App() {
         {isRunning ? (
           <FunctionalButton
             action={handlePause}
-            icon={pauseSVG}
-            color='bg-gray-400'
+            text={'pause'}
+            color={'bg-gray-400'}
+            border={'rounded-l-md'}
             label='Pause timer'
           />
         ) : (
           <FunctionalButton
             action={handleCountdown}
-            icon={playSVG}
-            color='bg-green-400'
+            text={'play'}
+            color={'bg-green-400'}
+            border={'rounded-l-md'}
             label='Play timer'
           />
         )}
 
         <FunctionalButton
           action={handleReset}
-          icon={resetSVG}
-          color='bg-red-400'
+          text={'reset'}
+          color={'bg-red-400'}
+          border={'rounded-r-md'}
           label='Reset timer'
         />
       </div>

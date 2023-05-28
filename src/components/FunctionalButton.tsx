@@ -2,23 +2,26 @@ import React from 'react';
 
 interface FunctionalButtonProps {
   action: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  icon: JSX.Element;
+  text: string;
   color: string;
   label: string;
+  border: string;
 }
 
 export default function FunctionalButton({
   action,
-  icon,
+  text,
   label,
+  color,
+  border,
 }: FunctionalButtonProps) {
   return (
     <button
       onClick={action}
-      className={`mx-2 my-8 rounded-md px-3 py-2 text-xl font-bold uppercase animate-once active:translate-y-0.5`}
+      className={`mb-10 ${color} ${border} px-3 py-2 text-xl font-bold uppercase active:translate-y-0.5`}
       aria-label={label}
     >
-      {icon}
+      {text}
     </button>
   );
 }
