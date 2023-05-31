@@ -77,7 +77,7 @@ function App() {
         <TimerSelector
           timerType={'Short break'}
           time={{
-            minutes: 5,
+            minutes: 2,
             seconds: 0,
           }}
           setCountdown={setCountdown}

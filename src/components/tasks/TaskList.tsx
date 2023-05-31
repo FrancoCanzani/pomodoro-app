@@ -30,6 +30,7 @@ export default function TaskList({
               transition={{ duration: 0.1 }}
               className='my-3 flex w-80 items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
               style={{ overflow: 'hidden' }}
+              whileHover={{ scale: 1.05 }}
             >
               <p
                 className='mr-10 cursor-pointer truncate text-2xl'
