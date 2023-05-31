@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Timer from './components/Timer';
 import FunctionalButton from './components/FunctionalButton';
 import TimerSelector from './components/TimerSelector';
-import Tasks from './components/Tasks';
+import Tasks from './components/tasks/Tasks';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -61,7 +61,7 @@ function App() {
   }
 
   return (
-    <main className='font-atkinson flex min-h-screen min-w-full flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-blue-400'>
+    <main className='font-atkinson flex min-h-screen min-w-full flex-col items-center justify-center bg-gradient-to-br from-slate-700 to-sky-950 text-gray-50'>
       <Header />
       <div className='mt-8 flex items-center justify-center px-2'>
         <TimerSelector
@@ -108,7 +108,7 @@ function App() {
           <FunctionalButton
             action={handlePause}
             text={'pause'}
-            color={'bg-gray-400'}
+            color={'bg-gray-600'}
             border={'rounded-l-md'}
             label='Pause timer'
           />
@@ -116,7 +116,7 @@ function App() {
           <FunctionalButton
             action={handleCountdown}
             text={'play'}
-            color={'bg-green-400'}
+            color={'bg-green-600'}
             border={'rounded-l-md'}
             label='Play timer'
           />
@@ -125,7 +125,7 @@ function App() {
         <FunctionalButton
           action={handleReset}
           text={'reset'}
-          color={'bg-red-400'}
+          color={'bg-red-600'}
           border={'rounded-r-md'}
           label='Reset timer'
         />
