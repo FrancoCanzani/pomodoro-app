@@ -7,7 +7,7 @@ export default function TaskInput({
 }) {
   return (
     <form onSubmit={handleAddTask} className='mb-2 flex w-full items-center'>
-      <fieldset className='w-full rounded-lg border-4 border-black'>
+      <fieldset className='w-full rounded-lg border-4 border-gray-100'>
         <legend className='px-2 text-center text-2xl font-black uppercase'>
           Tasks
         </legend>

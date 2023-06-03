@@ -28,7 +28,11 @@ export default function TaskList({
               animate={{ opacity: 1, y: 0, height: 'auto' }}
               exit={{ opacity: 0, y: 5, height: 0 }}
               transition={{ duration: 0.1 }}
-              className='my-3 flex w-80 items-center justify-between rounded-md border-l-4 border-l-red-600 bg-slate-950 px-8 py-3 text-xl font-medium text-white'
+              className={`my-3 flex w-80 items-center justify-between rounded-md ${
+                task.style === 'underline'
+                  ? 'border-l-4 border-l-green-600'
+                  : 'border-l-4 border-l-red-600'
+              } bg-gray-200 px-8 py-3 text-xl font-medium text-black`}
               style={{ overflow: 'hidden' }}
               whileHover={{ scale: 1.05 }}
             >
@@ -37,7 +41,6 @@ export default function TaskList({
                 style={{
                   textDecoration:
                     task.style === 'underline' ? 'line-through' : 'none',
-                  color: task.style === 'underline' ? 'gray' : '',
                 }}
                 onClick={() => toggleUnderline(task.id)}
               >
@@ -58,7 +61,7 @@ export default function TaskList({
                 >
                   <path
                     fill='none'
-                    stroke='currentColor'
+                    stroke='black'
                     strokeLinecap='round'
                     strokeLinejoin='round'
                     strokeWidth='1.5'

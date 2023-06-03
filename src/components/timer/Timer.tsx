@@ -52,7 +52,7 @@ export default function Timer({
   }, [countdown]);
 
   const isUnderOneMinute = countdown.minutes === 0 && countdown.seconds < 60;
-  const timerClassName = `text-center text-9xl font-black ${
+  const timerClassName = `text-center my-4 text-9xl font-black ${
     isUnderOneMinute ? 'animate-pulse' : ''
   }`;
 

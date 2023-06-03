@@ -63,7 +63,7 @@ function App() {
   return (
     <main className='font-atkinson flex min-h-screen min-w-full flex-col items-center justify-center bg-gradient-to-br from-slate-700 to-sky-950 text-gray-50'>
       <Header />
-      <div className='mt-8 flex items-center justify-center rounded-md bg-gray-100'>
+      <div className='mt-16 flex items-center justify-center rounded-md bg-gray-100'>
         <TimerSelector
           timerType={'Pomodoro'}
           time={{
@@ -103,7 +103,7 @@ function App() {
         interval={interval}
       />
 
-      <div className='mt-4 flex items-center justify-center sm:mt-8'>
+      <div className='flex items-center justify-center sm:mt-8'>
         {isRunning ? (
           <TimerButton
             action={handlePause}
