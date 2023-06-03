@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface FunctionalButtonProps {
+interface TimerButtonProps {
   action: (event: React.MouseEvent<HTMLButtonElement>) => void;
   text: string;
   color: string;
@@ -8,13 +8,13 @@ interface FunctionalButtonProps {
   border: string;
 }
 
-export default function FunctionalButton({
+export default function TimerButton({
   action,
   text,
   label,
   color,
   border,
-}: FunctionalButtonProps) {
+}: TimerButtonProps) {
   return (
     <button
       onClick={action}

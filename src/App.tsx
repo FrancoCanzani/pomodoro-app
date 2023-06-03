@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import Timer from './components/Timer';
-import FunctionalButton from './components/FunctionalButton';
-import TimerSelector from './components/TimerSelector';
+import Timer from './components/timer/Timer';
+import TimerButton from './components/timer/TimerButton';
+import TimerSelector from './components/timer/TimerSelector';
 import Tasks from './components/tasks/Tasks';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -63,7 +63,7 @@ function App() {
   return (
     <main className='font-atkinson flex min-h-screen min-w-full flex-col items-center justify-center bg-gradient-to-br from-slate-700 to-sky-950 text-gray-50'>
       <Header />
-      <div className='mt-8 flex items-center justify-center px-2'>
+      <div className='mt-8 flex items-center justify-center rounded-md bg-gray-100'>
         <TimerSelector
           timerType={'Pomodoro'}
           time={{
@@ -77,7 +77,7 @@ function App() {
         <TimerSelector
           timerType={'Short break'}
           time={{
-            minutes: 2,
+            minutes: 5,
             seconds: 0,
           }}
           setCountdown={setCountdown}
@@ -105,7 +105,7 @@ function App() {
 
       <div className='mt-4 flex items-center justify-center sm:mt-8'>
         {isRunning ? (
-          <FunctionalButton
+          <TimerButton
             action={handlePause}
             text={'pause'}
             color={'bg-gray-600'}
@@ -113,7 +113,7 @@ function App() {
             label='Pause timer'
           />
         ) : (
-          <FunctionalButton
+          <TimerButton
             action={handleCountdown}
             text={'play'}
             color={'bg-green-600'}
@@ -122,7 +122,7 @@ function App() {
           />
         )}
 
-        <FunctionalButton
+        <TimerButton
           action={handleReset}
           text={'reset'}
           color={'bg-red-600'}
